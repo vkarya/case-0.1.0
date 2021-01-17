@@ -16,6 +16,9 @@ public class TravelClient {
           HttpURLConnection conn = (HttpURLConnection) restUrl.openConnection();
           conn.setRequestMethod("GET");
           conn.setRequestProperty("Accept", "application/json");
+          conn.setRequestProperty("Accept-Language", "en-US");
+          conn.setRequestProperty("userName", "someuser");
+          conn.setRequestProperty("password", "psw");
           if (conn.getResponseCode() != 200) {
               throw new RuntimeException("Failed : HTTP error code : "
                       + conn.getResponseCode());
