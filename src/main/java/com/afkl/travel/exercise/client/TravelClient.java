@@ -11,7 +11,7 @@ public class TravelClient {
 
         try {
 
-          URL restUrl = new URL("http://localhost:8080/travel/locations/country/US");
+          URL restUrl = new URL("http://localhost:8050/travel/locations/country/US");
           
           HttpURLConnection conn = (HttpURLConnection) restUrl.openConnection();
           conn.setRequestMethod("GET");
