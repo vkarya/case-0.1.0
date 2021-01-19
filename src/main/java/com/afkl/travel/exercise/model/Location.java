@@ -2,36 +2,28 @@ package com.afkl.travel.exercise.model;
 
 import java.util.List;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Location")
 public class Location {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	
+		
 	private String code;
 	private String type;
 	private Double longitude;
 	private Double latitude;
 	private Integer parent;
-	
-//	@ManyToMany(fetch = FetchType.LAZY)
-//	@JoinColumn(table = "Translation", name = "id",referencedColumnName = "location",  insertable = false, updatable = false)
-//	@Fetch(FetchMode.JOIN)
+
 	@ManyToMany(targetEntity = Translation.class, fetch = FetchType.LAZY)
 	private List<Translation> translation;
 	

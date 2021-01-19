@@ -1,5 +1,9 @@
 package com.afkl.travel.exercise;
-
+/** Represents an REST Spring-Boot Main Class.
+ * @author Vaibhav Arya
+ * @version 0.1.0
+ * @since 0.1.0
+*/
 import javax.sql.DataSource;
 
 import org.springframework.boot.SpringApplication;

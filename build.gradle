@@ -12,6 +12,21 @@ repositories {
 sourceCompatibility = 8
 targetCompatibility = 8
 
+test {
+    useJUnitPlatform()
+}
+
+javadoc {
+    source = sourceSets.main.allJava
+    classpath = configurations.compile
+}
+
+sourceSets {
+    build {
+        java.srcDir file('src/main/java')
+
+    }
+}
 version = '0.1.0'
 
 dependencyManagement {
@@ -22,20 +37,15 @@ dependencyManagement {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.4.2'
-
     implementation 'com.h2database:h2'
     implementation 'org.springframework.boot:spring-boot-devtools'    
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.4.2'
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.4.2'
-	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
 	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
- 	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
 	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
-  
-    
-    testCompile 'junit:junit:4.12'
+    testImplementation("junit:junit:4.13")
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.6.0")
 }
 
 task runSwaggerUI(type: Exec) {
